@@ -16,7 +16,9 @@ func TestBuildDoc(t *testing.T) {
   aaa
 aaa
 @return 返回值注释
-aaa`
+aaa
+@sort 10
+`
 
 	ls := BuildDoc(doc)
 
