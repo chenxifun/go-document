@@ -1,6 +1,7 @@
 package doc
 
 import (
+	"encoding/json"
 	"fmt"
 	"testing"
 )
@@ -22,7 +23,9 @@ aaa
 
 	ls := BuildDoc(doc)
 
-	fmt.Println(ls)
+	jb, _ := json.Marshal(&ls)
+
+	fmt.Println(string(jb))
 }
 
 func TestBuildLine(t *testing.T) {

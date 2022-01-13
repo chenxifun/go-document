@@ -14,13 +14,20 @@ func (p *PkgData) Append(d *PkgData) {
 	p.Funcs = append(p.Funcs, d.Funcs...)
 }
 
-type PackageData struct {
-	PackName string
-	PkgPath  string
-	Structs  map[string]*StructData
-	Funcs    map[string]*FuncData
+func (p *PkgData) FindStruct(name string) *StructData {
+	for i, s := range p.Structs {
+		if s.Name == name {
+			return p.Structs[i]
+		}
+	}
+	return nil
 }
 
-func (p *PackageData) Append(d *PkgData) {
-
+func (p *PkgData) FindFunc(sname, fname string) *FuncData {
+	for i, s := range p.Funcs {
+		if s.StructName == sname && s.FuncName == fname {
+			return p.Funcs[i]
+		}
+	}
+	return nil
 }

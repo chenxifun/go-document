@@ -1,1 +1,1 @@
-package go_docs
+package go_document
