@@ -1,0 +1,4 @@
+github.com/chenxifun/logger v1.0.1-0.20210915083252-042226af3599 h1:7ORZdLX8pl5eXnrKzRp9QgjVrxQN6Ojm9RoZtDXAXDM=
+github.com/chenxifun/logger v1.0.1-0.20210915083252-042226af3599/go.mod h1:AF9pYqM/p7OUZ2+qTUp+NQe8e/gjMh/jqP/b8ZqV1eI=
+github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
+github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
