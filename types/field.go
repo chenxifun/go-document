@@ -8,6 +8,8 @@ type Fielder interface {
 	SetAlias(alias string)
 	GetAlias() string
 	IsObj() bool
+	ID() string
+	Type() string
 }
 
 type FieldType struct {
@@ -21,6 +23,25 @@ type FieldType struct {
 	Obj bool
 }
 
+func (f *FieldType) Type() string {
+	return "Obj"
+}
+
+func (f *FieldType) ID() string {
+
+	var p string
+	if f.PkgPath == "" && f.Alias != "" {
+		p = f.Alias
+	} else {
+		p = f.PkgPath
+	}
+
+	if p == "" {
+		return f.PkgName
+	}
+	return p + "." + f.PkgName
+}
+
 func (f *FieldType) IsObj() bool {
 	return f.Obj
 }
@@ -32,9 +53,7 @@ func (f *FieldType) GetAlias() string {
 	return f.Alias
 }
 func (f *FieldType) SetPkgPath(pkgPath string) {
-	if f.Obj {
-		f.PkgPath = pkgPath
-	}
+	f.PkgPath = pkgPath
 }
 
 func (f *FieldType) GetPkgPath() string {
@@ -52,6 +71,13 @@ func (f *FieldType) GetPkgName() string {
 type ArrayType struct {
 	Field Fielder
 	Len   int
+}
+
+func (f *ArrayType) Type() string {
+	return "Array"
+}
+func (f *ArrayType) ID() string {
+	return f.Field.ID()
 }
 
 func (f *ArrayType) IsObj() bool {
@@ -82,6 +108,14 @@ func (f *ArrayType) GetPkgName() string {
 type MapType struct {
 	Key   Fielder
 	Value Fielder
+}
+
+func (f *MapType) Type() string {
+	return "Map"
+}
+
+func (f *MapType) ID() string {
+	return f.Value.ID()
 }
 
 func (f *MapType) IsObj() bool {

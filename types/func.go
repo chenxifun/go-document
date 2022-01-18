@@ -56,7 +56,7 @@ func (f *FuncData) BuildDoc() {
 func setAliasPkg(fs *DeclField, thisPkg string, imports map[string]ImportData) {
 
 	alia := fs.Field.GetAlias()
-	if alia == "" && fs.Field.IsObj() {
+	if alia == "" && fs.Field.IsObj() { //
 		fs.Field.SetPkgPath(thisPkg)
 	}
 

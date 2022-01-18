@@ -60,6 +60,7 @@ func (d *Doc) Build() error {
 	for _, gf := range d.goFiles {
 		if !gf.IsTestGo {
 			data, err := astgo.ReadGoFile(gf)
+
 			if err != nil {
 				return errors.WithMessagef(err, "build go file %s has error", gf.FilePath)
 			}
